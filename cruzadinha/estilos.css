@@ -6,7 +6,7 @@
 
 .div_linha{
     width: 600px;
-    background-color: aqua;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: row;
 }
@@ -21,4 +21,12 @@
     height: 30px;
     width: 30px;
     margin: 1px;
+}
+
+.confirm{
+    border: 3px solid green;
+}
+
+.error{
+    border: 3px solid red;
 }

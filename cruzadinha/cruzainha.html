@@ -6,325 +6,361 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 
-    <h1>CRUZADINHA MALUCA</h1>
+    <header>
+        <div class="container">
+            <div class="menu">
+                <ul>
+                    <li></li>
+                    <!-- <li class="links"><a href="">Quiz</a></li> -->
+                    <i class="fa fa-times"></i>
+                    <li onclick="pergunta()" class="links">PERGUNTAS</li>
+            </div>
+            </ul>
+        </div>
+        </div>
+    </header>
 
-    <div class="div_linha">
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="14" id="eprom_e" class="ipt">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
+    <h1 style="align-items: center; justify-content:center; display:flex; color: white;">UNDERTALE CROSSBOARD<i
+            class="fa fa-heart" style="font-size:35px;color:red"></i></h1>
+
+    <main>
+        <div class="div_linha">
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="14" id="eprom_e" class="ipt">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="eprom_p">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="7" class="ipt" id="dma_d">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="11" id="ram_r" class="ipt">
+                <input class="ipt" id="ram_a">
+                <input placeholder="13" id="ram_m" class="ipt">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="5" class="ipt" id="adress_a">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="dma_m">
+                <span class="span_nada"></span>
+                <input placeholder="8" class="ipt" id="quad_q">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="eprom_o">
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_e">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="6" class="ipt" id="data_d">
+                <input class="ipt" id="data_a">
+                <input placeholder="16" class="ipt" id="threads_t">
+                <input class="ipt" id="dma_a">
+                <input class="ipt" id="data_b">
+                <input class="ipt" id="quad_u">
+                <input class="ipt" id="data_s">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="eprom_m">
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_m">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="adress_r">
+                <span class="span_nada"></span>
+                <input class="ipt" id="threads_h">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="quad_a">
+                <span class="span_nada"></span>
+                <input placeholder="10" class="ipt" id="cache_c">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_o">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="adress_e">
+                <span class="span_nada"></span>
+                <input class="ipt" id="threads_r">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="9" class="ipt" id="dual_d">
+                <input class="ipt" id="dual_u">
+                <input class="ipt" id="cache_a">
+                <input class="ipt" id="dual_l">
+                <input placeholder="12" class="ipt" id="cpu_c">
+                <input class="ipt" id="dual_o">
+                <input class="ipt" id="memoria_massa_r">
+                <input class="ipt" id="dual_e">
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input id="cs_c" placeholder="3" class="ipt">
+                <input id="cs_s" class="ipt">
+                <span class="span_nada"></span>
+                <input class="ipt" id="threads_e">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="quad_c">
+                <span class="span_nada"></span>
+                <input class="ipt" id="cache_cc">
+                <span class="span_nada"></span>
+                <input class="ipt" id="cpu_p">
+                <span class="span_nada"></span>
+                <input placeholder="18" class="ipt" id="memoria_massa_i">
+                <input class="ipt" id="i7_7">
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="adress_s">
+                <span class="span_nada"></span>
+                <input class="ipt" id="threads_a">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="quad_o">
+                <span class="span_nada"></span>
+                <input class="ipt" id="cache_h">
+                <span class="span_nada"></span>
+                <input class="ipt" id="cpu_u">
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_a">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="adress_b">
+                <span class="span_nada"></span>
+                <input class="ipt" id="threads_d">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="quad_r">
+                <span class="span_nada"></span>
+                <input class="ipt" id="cache_e">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_d">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <input placeholder="2" class="ipt" id="ula_u">
+                <span class="span_nada"></span>
+                <input class="ipt" id="adress_u">
+                <span class="span_nada"></span>
+                <input class="ipt" id="threads_s">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="quad_e">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_ee">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <input placeholder="1" class="ipt" id="flash_f">
+                <input class="ipt" id="ula_l">
+                <input class="ipt" id="flash_a">
+                <input class="ipt" id="flash_s">
+                <input class="ipt" id="flash_h">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_mm">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <input class="ipt" id="ula_a">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_aa">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="15" class="ipt" id="rom_r">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_s">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input placeholder="4" class="ipt" id="regist_r">
+                <input class="ipt" id="regist_e">
+                <input class="ipt" id="regist_g">
+                <input placeholder="17" class="ipt" id="i5_i">
+                <input class="ipt" id="regist_s">
+                <input class="ipt" id="regist_t">
+                <input class="ipt" id="regist_rr">
+                <input class="ipt" id="regist_a">
+                <input class="ipt" id="regist_d">
+                <input class="ipt" id="rom_o">
+                <input class="ipt" id="regist_rrr">
+                <input class="ipt" id="regist_ee">
+                <input class="ipt" id="memoria_massa_ss">
+                <span class="span_nada"></span>
+            </div>
+            <div class="column" id="2">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="i5_5">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="rom_m">
+                <span class="span_nada"></span>
+                <span class="span_nada"></span>
+                <input class="ipt" id="memoria_massa_aaa">
+                <span class="span_nada"></span>
+            </div>
         </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="eprom_p">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
+        <span style="color:white; margin-top: 2%;">OBS: RESPONDA APENAS COM LETRA MINUSCULA</span>
+        <div class="personagem">
+            <div id="sans"><img src="Gif_Sans.gif" alt=""></div>
         </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="7" class="ipt" id="dma_d">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="11" id="ram_r" class="ipt">
-            <input class="ipt" id="ram_a">
-            <input placeholder="13" id="ram_m" class="ipt">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="5" class="ipt" id="adress_a">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="dma_m">
-            <span class="span_nada"></span>
-            <input placeholder="8" class="ipt" id="quad_q">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="eprom_o">
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_e">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="6" class="ipt" id="data_d">
-            <input class="ipt" id="data_a">
-            <input placeholder="16" class="ipt" id="threads_t">
-            <input class="ipt" id="dma_a">
-            <input class="ipt" id="data_b">
-            <input class="ipt" id="quad_u">
-            <input class="ipt" id="data_s">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="eprom_m">
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_m">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="adress_r">
-            <span class="span_nada"></span>
-            <input class="ipt" id="threads_h">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="quad_a">
-            <span class="span_nada"></span>
-            <input placeholder="10" class="ipt" id="cache_c">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_o">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="adress_e">
-            <span class="span_nada"></span>
-            <input class="ipt" id="threads_r">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="9" class="ipt" id="dual_d">
-            <input class="ipt" id="dual_u">
-            <input class="ipt" id="cache_a">
-            <input class="ipt" id="dual_l">
-            <input placeholder="12" class="ipt" id="cpu_c">
-            <input class="ipt" id="dual_o">
-            <input class="ipt" id="memoria_massa_r">
-            <input class="ipt" id="dual_e">
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input id="cs_c" placeholder="3" class="ipt">
-            <input id="cs_s" class="ipt">
-            <span class="span_nada"></span>
-            <input class="ipt" id="threads_e">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="quad_c">
-            <span class="span_nada"></span>
-            <input class="ipt" id="cache_cc">
-            <span class="span_nada"></span>
-            <input class="ipt" id="cpu_p">
-            <span class="span_nada"></span>
-            <input  placeholder="18" class="ipt" id="memoria_massa_i">
-            <input  class="ipt" id="i7_7">
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="adress_s">
-            <span class="span_nada"></span>
-            <input class="ipt" id="threads_a">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="quad_o">
-            <span class="span_nada"></span>
-            <input class="ipt" id="cache_h">
-            <span class="span_nada"></span>
-            <input class="ipt" id="cpu_u">
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_a">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="adress_b">
-            <span class="span_nada"></span>
-            <input class="ipt" id="threads_d">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="quad_r">
-            <span class="span_nada"></span>
-            <input class="ipt" id="cache_e">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_d">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <input placeholder="2" class="ipt" id="ula_u">
-            <span class="span_nada"></span>
-            <input class="ipt" id="adress_u">
-            <span class="span_nada"></span>
-            <input class="ipt" id="threads_s">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="quad_e">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_ee">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <input placeholder="1" class="ipt" id="flash_f">
-            <input class="ipt" id="ula_l">
-            <input class="ipt" id="flash_a">
-            <input class="ipt" id="flash_s">
-            <input class="ipt" id="flash_h">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_mm">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <input class="ipt" id="ula_a">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_aa">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="15" class="ipt" id="rom_r">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_s">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input placeholder="4" class="ipt" id="regist_r">
-            <input class="ipt" id="regist_e">
-            <input class="ipt" id="regist_g">
-            <input placeholder="17" class="ipt" id="i5_i">
-            <input class="ipt" id="regist_s">
-            <input class="ipt" id="regist_t">
-            <input class="ipt" id="regist_rr">
-            <input class="ipt" id="regist_a">
-            <input class="ipt" id="regist_d">
-            <input class="ipt" id="rom_o">
-            <input class="ipt" id="regist_rrr">
-            <input class="ipt" id="regist_ee">
-            <input class="ipt" id="memoria_massa_ss">
-            <span class="span_nada"></span>
-        </div>
-        <div class="column" id="2">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="i5_5">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="rom_m">
-            <span class="span_nada"></span>
-            <span class="span_nada"></span>
-            <input class="ipt" id="memoria_massa_aaa">
-            <span class="span_nada"></span>
+        
+    </main>
+
+    <div class="choices">
+        <div class="choice fight">
+            <i class="fa fa-cut"></i>
+            <span onclick="resultado()"> Resultado <span>
         </div>
     </div>
-    <button onclick="resultado()">Resultado</button>
 
-    <div class="perguntas">
-        <p> 1 - Memoria tipo EEPROM que permite diversos endereços sejam apagados ou escritos em um única operação</p>
-        <p> 2 - Responsável pela realização das operações lógicas e arítiméticas</p>
-        <p> 3 -Mecanismo que permite o acesso as memórias e periféricos externos</p>
-        <p> 4 - Responsável para armezenamento das informações binarias</p>
-        <p> 5 - Arquitetura de barramentos de computador</p>
-        <p> 6 - Envia ou recebe dados da memória RAM</p>
-        <p> 7 - Capacita perifericos ter acesso direto a memória ram</p>
-        <p> 8 - Processador com 4 núcleos</p>
-        <p> 9 - Processador com 2 núcleos</p>
-        <p> 10 - Memória volátil que quarda temporariamente os processos de execução</p>
-        <p> 11 - Memoria volátil responsavel pelo processamento das atividades</p>
-        <p> 12 - Parte do computador onde realiza todas operações</p>
-        <p> 13 - Memória não-volatil que guarda todas informações</p>
-        <p> 14 - Memoria não-volatil responsavel pelo processamento das atividades</p>
-        <p> 15 - Mémoria de programa não-volatil</p>
-        <p> 16- Ordem de execuções que permite o computador fazer mais de uma tarefa ao mesmo tempo</p>
-        <p> 17 - Processador da intel que utiliza 2 microarquiteturas</p>
-        <p> 18 - Processador da intel que utiliza 8 microarquiteturas</p>
-       
+    <div id="perguntas" class="perguntas" style="display: none;">
+        <div class="bloco1">
+            <p> 1 - Memoria que permite diversos endereços sejam apagados ou escritos em um única operação</p>
+            <p> 2 - Responsável pela realização das operações lógicas e arítiméticas</p>
+            <p> 3 -Mecanismo que permite o acesso as memórias e periféricos externos</p>
+            <p> 4 - Responsável para armezenamento das informações binarias</p>
+            <p> 5 - Arquitetura de barramentos de computador</p>
+            <p> 6 - Envia ou recebe dados da memória RAM</p>
+            <p> 7 - Capacita perifericos ter acesso direto a memória ram</p>
+            <p> 8 - Processador com 4 núcleos</p>
+            <p> 9 - Processador com 2 núcleos</p>
+        </div>
+        <div class="bloco2">
+            <p> 10 - Memória volátil que quarda temporariamente os processos de execução</p>
+            <p> 11 - Memoria volátil responsavel pelo processamento das atividades</p>
+            <p> 12 - Parte do computador onde realiza todas operações</p>
+            <p> 13 - Memória não-volatil que guarda todas informações</p>
+            <p> 14 - Memoria não-volatil responsavel pelo processamento das atividades</p>
+            <p> 15 - Mémoria de programa não-volatil</p>
+            <p> 16- Ordem de execuções que permite o computador fazer mais de uma tarefa ao mesmo tempo</p>
+            <p> 17 - Processador da intel que utiliza 2 microarquiteturas</p>
+            <p> 18 - Processador da intel que utiliza 8 microarquiteturas</p>
+        </div>
     </div>
+
+    <footer>
+        <p>Todos os direitos reservados para Fernando Araújo, Douglas Rostichelli e Rodrigo Tardeo &copy; </p>
+    </footer>
 
 </body>
 
@@ -337,7 +373,7 @@
         lista_ipt = [];
         lista_result = [];
 
-        lista_ipt.push(eprom_e, eprom_p, ram_r, eprom_o, eprom_m.value, ram_a.value, ram_m.value, memoria_massa_e.value, memoria_massa_m.value, memoria_massa_o.value, memoria_massa_r.value, memoria_massa_i.value, memoria_massa_a.value, memoria_massa_d.value, memoria_massa_ee.value, memoria_massa_mm.value, memoria_massa_aa.value, memoria_massa_s.value, memoria_massa_ss.value, memoria_massa_aaa.value, flash_f.value, ula_l.value, flash_a.value, flash_s.value, flash_h.value, ula_u.value, ula_a.value, cs_c.value, cs_s.value, regist_r.value, regist_e.value, regist_g.value, i5_i.value, regist_s.value, regist_t.value, regist_rr.value, regist_a.value, regist_d.value, rom_o.value, regist_rrr.value, regist_ee.value, adress_a.value, data_d.value, adress_r.value, adress_e.value, adress_s.value, adress_b.value, adress_u.value, data_a.value, threads_t.value, dma_a.value, data_b.value, quad_u.value, data_s.value, dma_d.value, dma_m.value, quad_q.value, quad_a.value, dual_d.value, quad_c.value, quad_o.value, quad_r.value, quad_e.value, dual_u.value, cache_a.value, dual_l.value, cpu_c.value, dual_o.value, dual_e.value, cache_c.value, cache_cc.value, cache_h.value, cache_e.value, cpu_p.value, cpu_u.value, rom_r.value, rom_m.value, i5_5.value, threads_h.value, threads_r.value, threads_e.value, threads_a.value, threads_d.value, threads_s.value, i7_7.value);
+        lista_ipt.push(eprom_e.value, eprom_p.value, ram_r.value, eprom_o.value, eprom_m.value, ram_a.value, ram_m.value, memoria_massa_e.value, memoria_massa_m.value, memoria_massa_o.value, memoria_massa_r.value, memoria_massa_i.value, memoria_massa_a.value, memoria_massa_d.value, memoria_massa_ee.value, memoria_massa_mm.value, memoria_massa_aa.value, memoria_massa_s.value, memoria_massa_ss.value, memoria_massa_aaa.value, flash_f.value, ula_l.value, flash_a.value, flash_s.value, flash_h.value, ula_u.value, ula_a.value, cs_c.value, cs_s.value, regist_r.value, regist_e.value, regist_g.value, i5_i.value, regist_s.value, regist_t.value, regist_rr.value, regist_a.value, regist_d.value, rom_o.value, regist_rrr.value, regist_ee.value, adress_a.value, data_d.value, adress_r.value, adress_e.value, adress_s.value, adress_b.value, adress_u.value, data_a.value, threads_t.value, dma_a.value, data_b.value, quad_u.value, data_s.value, dma_d.value, dma_m.value, quad_q.value, quad_a.value, dual_d.value, quad_c.value, quad_o.value, quad_r.value, quad_e.value, dual_u.value, cache_a.value, dual_l.value, cpu_c.value, dual_o.value, dual_e.value, cache_c.value, cache_cc.value, cache_h.value, cache_e.value, cpu_p.value, cpu_u.value, rom_r.value, rom_m.value, i5_5.value, threads_h.value, threads_r.value, threads_e.value, threads_a.value, threads_d.value, threads_s.value, i7_7.value);
 
         lista_result.push(eprom_e, eprom_p, ram_r, eprom_o, eprom_m, ram_a, ram_m, memoria_massa_e, memoria_massa_m, memoria_massa_o, memoria_massa_r, memoria_massa_i, memoria_massa_a, memoria_massa_d, memoria_massa_ee, memoria_massa_mm, memoria_massa_aa, memoria_massa_s, memoria_massa_ss, memoria_massa_aaa, flash_f, ula_l, flash_a, flash_s, flash_h, ula_u, ula_a, cs_c, cs_s, regist_r, regist_e, regist_g, i5_i, regist_s, regist_t, regist_rr, regist_a, regist_d, rom_o, regist_rrr, regist_ee, adress_a, data_d, adress_r, adress_e, adress_s, adress_b, adress_u, data_a, threads_t, dma_a, data_b, quad_u, data_s, dma_d, dma_m, quad_q, quad_a, dual_d, quad_c, quad_o, quad_r, quad_e, dual_u, cache_a, dual_l, cpu_c, dual_o, dual_e, cache_c, cache_cc, cache_h, cache_e, cpu_p, cpu_u, rom_r, rom_m, i5_5, threads_h, threads_r, threads_e, threads_a, threads_d, threads_s, i7_7);
 
@@ -349,10 +385,16 @@
             if (lista_ipt[n] == lista_item[n]) {
                 result.classList.remove("error")
                 result.classList.add("confirm")
+                sans.innerHTML = `<img style="width: 25%; margin-top: 10%;" src="sans-undertale.gif" alt="">`
             } else {
                 result.classList.remove("confirm")
                 result.classList.add("error")
+                sans.innerHTML = `<img style="width: 25%; margin-top: 10%;" src="erro.gif" alt="">`
             }
         }
+    }
+
+    function pergunta(){
+        perguntas.style.display = "flex"
     }
 </script>

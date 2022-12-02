@@ -1,0 +1,388 @@
+/*CONTEÚDO DA PÁGINA*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*BANNER*/
+
+.banner {
+  /* background-image: url("./assets/img/background_white.jpg"); */
+  background-size: cover;
+}
+
+
+.descricao {
+  width: 40%;
+  font-size: 20px;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner .container {
+  height: 350px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_saibamais {
+  background-color: #32b9cd;
+  width: 484px;
+  border: #32b9cd solid 10px;
+  text-decoration: none;
+  margin-top: 300px;
+  color: white;
+  padding: 4px 0px;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  /* left: 5.5%; */
+  text-align: center;
+  /* box-shadow: 0px 0px 42px 12px rgb(0 0 0 / 41%); */
+}
+
+.btn_saibamais:hover {
+  transform: translateZ(-10px);
+  opacity: 0.8;
+}
+
+.banner-calculadora {
+  background-color: rgb(255, 219, 196);
+  width: 100%;
+  display: flex;
+  margin-top: -5px;
+  /* padding: 25px 0px; */
+  height: 75vh;
+  box-shadow: 0px 0px 42px 12px rgb(0 0 0 / 41%);
+}
+
+.banner-calculadora a {
+  text-decoration: none;
+  height: 0;
+}
+
+
+.banner-calculadora .caixa p {
+  font-size: large;
+}
+
+
+
+.banner-calculadora .caixa h3 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #265078;
+}
+
+.banner-calculadora .caixa img {
+  height: 400px;
+  padding: 20px 0px;
+  width: 400px;
+  display: flex;
+  position: absolute;
+  margin-left: 45%;
+  margin-top: -150px;
+
+}
+
+.banner-sobre {
+  background-image: url(../assets/img/background_white.jpg);
+  width: 100%;
+  display: flex;
+  margin-top: -5px;
+  /* padding: 25px 0px; */
+  height: 75vh;
+  box-shadow: 0px 0px 42px 12px rgb(0 0 0 / 41%);
+}
+
+.banner-sobre .caixa h3 {
+  cursor: pointer;
+  font-size: 45px;
+  font-weight: bold;
+  color: #265078;
+}
+
+/*SOCIAL*/
+.banner2 {
+  background-color: #def1ff;
+  width: 100%;
+  display: flex;
+  margin-top: -5px;
+  /* padding: 25px 0px; */
+  height: 75vh;
+  box-shadow: 0px 0px 42px 12px rgb(0 0 0 / 41%);
+}
+
+.banner2 .caixas {
+  display: flex;
+
+}
+
+.banner2 h3 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #265078;
+}
+
+.caixa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 15px;
+  display: flex;
+  padding: 0 20px;
+}
+
+.banner2 .caixa img {
+  height: 200px;
+  width: 200px;
+  padding: 20px 0px;
+  background-color: white;
+  box-shadow: 0px 0px 42px -15px rgb(0 0 0 / 41%);
+}
+
+.banner2 .caixa img:hover {
+  position: relative;
+  top: -10px;
+  transition: all .0.5s ease-in-out;
+}
+
+.caixa h4 {
+  margin: 15px 0;
+  color: #36A2EB;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.caixa p {
+  text-align: center;
+}
+
+.caixa img {
+  width: 170px;
+}
+
+.banner3 {
+  background-color: #F2A19A;
+  width: 100%;
+  display: flex;
+  margin-top: -5px;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 555px;
+  background-position-x: 95%;
+  background-position-y: 80%;
+  box-shadow: 0px 0px 42px 12px rgb(0 0 0 / 41%);
+}
+
+.banner3 .caixas {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 110%;
+}
+
+.banner3 .caixa {
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 30px 5px;
+  margin-bottom: 25px;
+  box-shadow: 0px 0px 42px -18px rgb(0 0 0 / 41%);
+  transition: 0.9s;
+  width: 55%;
+}
+
+.banner3 .caixa:hover {
+  background-color: rgb(38, 80, 120);
+  color: white;
+
+}
+
+.banner3 .caixa:hover h4 {
+  color: white;
+}
+
+
+.banner3 .caixa:last-child {
+  margin-bottom: 0;
+}
+
+.banner3 h4 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.banner3 p {
+  padding: 0px 70px;
+}
+
+.img_banner3 {
+  position: absolute;
+  margin-left: 50%;
+  margin-top: 2%;
+}
+
+.banner3 .img_valores {
+  width: 76vh;
+}
+
+.banner5 {
+  background-color: #265078;
+  width: 100%;
+  margin-top: -5px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: #FFF solid 5px;
+
+}
+
+.banner5 h4 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.banner5 p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #E0FEFF;
+  margin: 35px 0px 130px;
+}
+
+.btn_simulador {
+  background-color: #32b9cd;
+  width: 480px;
+  border: #32b9cd solid 10px;
+  text-decoration: none;
+  color: white;
+  padding: 4px 0px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0px 0px 42px 12px rgb(0 0 0 / 41%);
+}
+
+
+.banner-suporte {
+  background-color: rgb(233, 219, 244);
+  width: 100%;
+  display: flex;
+  margin-top: -5px;
+  /* padding: 25px 0px; */
+  height: 75vh;
+  box-shadow: 0px 0px 42px 12px rgb(0 0 0 / 41%);
+}
+
+.banner-suporte a {
+  text-decoration: none;
+  height: 0;
+}
+
+
+.banner-suporte .caixa p {
+  font-size: large;
+}
+
+
+
+.banner-suporte .caixa h3 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #265078;
+}
+
+.banner-suporte .caixa img {
+  height: 400px;
+  padding: 20px 0px;
+  width: 400px;
+  display: flex;
+  position: absolute;
+  margin-left: 45%;
+  margin-top: -150px;
+
+}
+
+/*RODAPÉ/FOOTER*/
+
+footer {
+  padding: 45px 0;
+  background-color: #32b9cd;
+}
+
+footer .container {
+  justify-content: center;
+}
+
+footer p {
+  color: #fff;
+}
+
+/* 
+  RESPONSIVIDADE */
+
+@media screen and (max-width: 1366px) {
+  .navegacao {
+    width: 390px;
+    color: #FFF;
+    margin-left: 24%;
+  }
+
+  .banner-sobre .caixas {
+    margin-top: 0px;
+  }
+
+  .descricao {
+    width: 50%;
+    font-size: 20px;
+  }
+
+  .banner-calculadora p {
+    width: 535px;
+  }
+
+  .banner-suporte p {
+    width: 535px;
+  }
+
+  .banner3 .caixas {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 110%;
+  }
+
+  .banner3 .caixa {
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 30px 5px;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 42px -18px rgb(0 0 0 / 41%);
+    transition: 0.9s;
+    width: 55%;
+  }
+
+  .banner option[value=""][disabled] {
+    display: none;
+  }
+
+}
+
+
+@media screen and (max-width: 1024px) {}
+
+
+@media screen and (max-width: 1024px) {}
+
+
+@media screen and (max-width: 1024px) {}
+
+
+@media screen and (max-width: 1024px) {}

@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+/*HEADER*/
+header {
+  padding: 9px 0;
+  background-color: #265078;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.titulo img{
+  height: 70px;
+}
+
+.navegacao {
+  width: 350px;
+  color: #FFF;
+  margin-left: 35%;
+}
+
+.navegacao ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navegacao a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.navegacao ul li {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.agora {
+  font-weight: bold;
+  color: #E0FEFF;
+}
+
+/*RODAPÉ/FOOTER*/
+
+footer {
+    padding: 45px 0;
+    background-color: #265078;
+  }
+  
+  footer .container {
+    justify-content: center;
+  }
+  
+  footer p {
+    color: #fff;
+  }
+
+  .error {
+    border-bottom: red solid !important ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.confirmar {
+    border-bottom: green solid !important; 
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}

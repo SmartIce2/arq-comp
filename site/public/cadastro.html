@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | SmartIce</title>
+
+    <link rel="stylesheet" href="css/estilos-gerais.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+    <!-- Adicionando Javascript -->
+    <script>
+
+        $(document).ready(function () {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#ipt_rua").val("");
+                $("#ipt_bairro").val("");
+                $("#ipt_cidade").val("");
+                $("#ipt_uf").val("");
+
+            }
+
+            function adicionar_botao() {
+                $('#form-cadastro')[0].innerHTML += `<div onclick="cadastrar_empresa()" class='btn_cadastrar'>Enviar</div>`
+            }
+            adicionar_botao()
+
+            //Quando o campo cep perde o foco.
+            $("#ipt_cep").blur(function () {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#ipt_rua").val("...");
+                        $("#ipt_bairro").val("...");
+                        $("#ipt_cidade").val("...");
+                        $("#ipt_uf").val("...");
+
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#ipt_rua").val(dados.logradouro);
+                                $("#ipt_bairro").val(dados.bairro);
+                                $("#ipt_cidade").val(dados.localidade);
+                                $("#ipt_uf").val(dados.uf);
+
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!--HEADER-->
+    <header>
+        <div class="container">
+            <div class="titulo">
+                <img src="./assets/img/logo2.png" alt="logo da SmartIce">
+            </div>
+
+            <div class="navegacao">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li>|</li>
+                    <li><a href="login.html">Login</a></li>
+                    <li class="agora"><a href="#">Cadastro</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+
+        <section class="banner">
+            <div class="container">
+                <form novalidate="novalidate" id="form-cadastro" class="caixa-formulario">
+                    <img src="./assets/img/logo.png" alt="logo da SmartIce"><br>
+                    <h2 id="h2_aviso">Crie sua conta!</h2>
+                    <ul class="blocos">
+                        <!-- campo empresa -->
+                        <li>
+                            <div class="campo">
+                                <label for="razaoSocial">Razão Social:</label>
+                                <input type="text" id="razaoSocial" name="razaoSocial"
+                                    placeholder="ex: sua razão social LTDA">
+                                <span id="campo_razao_social"></span>
+                            </div><br>
+
+                            <div class="campo">
+                                <label for="nomeFantasia">Nome Fantasia:</label>
+                                <input type="text" id="nomeFantasia" name="nomeFantasia" placeholder="ex: sua empresa">
+                                <span id="campo_nome_fantasia"></span>
+                            </div><br>
+
+                            <div class="campo">
+                                <label for="cnpj">CNPJ:</label>
+                                <input size=15 maxlength=15 type="text" id="ipt_cnpj" class="ls-mask-cnpj" name="cnpj"
+                                    placeholder="00.000.000/0000-00">
+                                <span id="campo_cnpj"></span>
+                            </div><br>
+
+                            <div class="campo">
+                                <label for="telefone">Telefone Comercial:</label>
+                                <input type="telefone" id="ipt_telefone" name="telefone" placeholder="(99) 9999-9999">
+                                <span id="campo_telefone_comercial"></span>
+                            </div><br>
+
+                            <div class="campo">
+                                <label for="celular">Telefone Celular:</label>
+                                <input type="celular" id="celular" name="celular" placeholder="(99) 99999-9999">
+                            </div><br>
+                        </li>
+                        <!-- campo endereço -->
+                        <li>
+                            <form method="get" action=".">
+                                <div class="campo">
+                                    <label for="cep">CEP:</label>
+                                    <input name="cep" type="text" required id="ipt_cep" value="" size="10"
+                                        maxlength="9" />
+                                </div>
+
+                                <div class="campo">
+                                    <label for="rua">Rua:</label>
+                                    <input name="rua" type="text" required id="ipt_rua" size="60" />
+                                </div>
+
+                                <div class="campo">
+                                    <label for="bairro">Bairro:</label>
+                                    <input name="bairro" type="text" required id="ipt_bairro" size="40" />
+                                </div>
+
+                                <div class="campo">
+                                    <label for="cidade">Cidade:</label>
+                                    <input name="cidade" type="text" required id="ipt_cidade" size="40" />
+                                </div>
+
+                                <div class="campo">
+                                    <label for="estado">Estado:</label>
+                                    <input name="uf" type="text" required id="ipt_uf" size="2" />
+                                </div>
+                                <!-- campo email -->
+                                <div class="campo">
+                                    <label for="numero">Numero:</label>
+                                    <input type="number" name="numero" id="ipt_numero" required size="4">
+                                </div>
+                            </form>
+                        </li>
+                        <li>
+                            <div class="campo">
+                                <label for="email">E-mail Principal:</label>
+                                <input id="ipt_email" type="email" name="email" placeholder="email@email.com">
+                                <span id="campo_confirmar_email"></span>
+                            </div><br>
+
+                            <div class="campo">
+                                <label for="senha">Senha:</label>
+                                <input id="ipt_senha" type="password" name="senha" placeholder="********">
+                                <p style="font-weight: bold; font-size: 12px;  margin-bottom: 10px;"
+                                    id="campo_validar_senha">(pelo menos 8 caracteres)</p>
+                            </div>
+
+                            <div class="campo">
+                                <label for="confirmsenha">Confirmação de Senha:</label>
+                                <input id="ipt_confirmSenha" type="password" name="confirmSenha" placeholder="********">
+                                <span id="campo_confirmar_senha"></span>
+                            </div>
+                        </li>
+                </form>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <div class="container">
+            <p>SmartIce &copy; 2022 todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script>
+    // function verificar_registro_email() {
+
+    // }
+
+    // function validar_registro_senha() {
+
+    // }
+
+    // function validar_razao_social() {
+    // }
+
+    // function validar_nome_fantasia() {
+
+    // }
+
+    // function validar_cnpj() {
+    // }
+
+    function cadastrar_empresa() {
+        var razaoVar = razaoSocial.value;
+        var nomeVar = nomeFantasia.value;
+        var cnpjVar = ipt_cnpj.value;
+        var telefoneComercialVar = ipt_telefone.value;
+        var telefoneCelVar = celular.value;
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+        var cepVar = ipt_cep.value;
+        var ruaVar = ipt_rua.value;
+        var bairroVar = ipt_bairro.value;
+        var cidadeVar = ipt_cidade.value;
+        var estadoVar = ipt_uf.value;
+        var numerovar = ipt_numero.value;
+
+        if (email == "" || senha == "" || confirmSenha == "" || nome_fantasia == "" || razao_social == "") {
+            cardErro.style.display = "block";
+            h2_aviso.innerHTML = "Há campos em branco!";
+
+            var valida_vazio = 0
+        }
+
+        var razao_social = razaoSocial.value;
+
+        if (razao_social.length < 2) {
+            razaoSocial.classList.add("error")
+            razaoSocial.classList.remove("confirmar")
+            campo_razao_social.style.color = "red"
+            campo_razao_social.innerHTML = "Razão social inválida "
+
+            var valida_razao = 0;
+        } else {
+            campo_razao_social.style.color = "green"
+            campo_razao_social.innerHTML = "Razão social válida"
+            razaoSocial.classList.remove("error")
+            razaoSocial.classList.add("confirmar")
+
+            valida_razao = 1;
+        }
+
+        // nome fantasia
+
+        var nome_fantasia = nomeFantasia.value;
+
+        if (nome_fantasia.length < 2 || nome_fantasia.length > 55) {
+            nomeFantasia.classList.add("error")
+            nomeFantasia.classList.remove("confirmar")
+            campo_nome_fantasia.style.color = "red"
+            campo_nome_fantasia.innerHTML = "Quantidade de caracteres indevido!"
+
+            var valida_fantasia = 0;
+        } else {
+            campo_nome_fantasia.style.color = "green"
+            campo_nome_fantasia.innerHTML = "Nome Fantasia válida"
+            nomeFantasia.classList.remove("error")
+            nomeFantasia.classList.add("confirmar")
+
+            valida_fantasia = 1;
+        }
+
+        // email
+
+        var email = ipt_email.value.trim()
+        /* Verificar se tem 6 caracteres ou mais no email antes do @*/
+        if (email.indexOf(" ") > 0) {
+            ipt_email.classList.add("error")
+            ipt_email.classList.remove("confirmar")
+            campo_confirmar_email.style.color = "red"
+            campo_confirmar_email.innerHTML = "Email inválido, retire os espaços!"
+
+            var valida_email = 0;
+        } else if ((email.indexOf("@sptech.school") > 3 || email.indexOf("@gmail.com") > 3) && email.indexOf("@") > 3) {
+            campo_confirmar_email.style.color = "green"
+            campo_confirmar_email.innerHTML = "Email válido"
+            ipt_email.classList.remove("error")
+            ipt_email.classList.add("confirmar")
+
+            valida_email = 1;
+        } else {
+            ipt_email.classList.add("error")
+            ipt_email.classList.remove("confirmar")
+            campo_confirmar_email.style.color = "red"
+            campo_confirmar_email.innerHTML = "Email inválido"
+
+            valida_email = 0;
+        }
+
+        // senha
+
+        var senha = ipt_senha.value
+        var confirmSenha = ipt_confirmSenha.value
+        /* validação da senha, se tem espaço no começo ou no fim */
+        if (senha.startsWith(" ") || senha.endsWith(" ")) {
+            campo_validar_senha.style.color = "Red"
+            campo_validar_senha.innerHTML = "A senha não pode começar nem terminar com um espaço"
+            ipt_senha.classList.add("error")
+
+            var valida_senha = 0;
+        } else { /* validação da senha, se tem 8 letras ou mais */
+            if (senha.length >= 8) {
+                ipt_senha.classList.remove("error")
+                ipt_senha.classList.add("confirmar")
+                campo_validar_senha.style.color = "Green"
+                campo_validar_senha.innerHTML = "(pelo menos 8 caracteres)"
+                /* Confirmar se a senha é igual nos dois campos*/
+                /*Veririfar se senha é igual com campo CONFIRMSENHA*/
+                valida_senha = 1;
+                if ((senha == confirmSenha) && confirmSenha.length >= 8) {
+                    ipt_confirmSenha.classList.remove("error")
+                    ipt_confirmSenha.classList.add("confirmar")
+                    campo_confirmar_senha.style.color = "green"
+                    campo_confirmar_senha.innerHTML = "senha correta"
+                    valida_senha = 1;
+                } else {
+                    ipt_confirmSenha.classList.add("error")
+                    ipt_confirmSenha.classList.remove("confirmar")
+                    campo_confirmar_senha.style.color = "red"
+                    campo_confirmar_senha.innerHTML = "senha incorreta"
+
+                    valida_senha = 0;
+                }
+            } else {
+                ipt_senha.classList.remove("confirmar")
+                campo_validar_senha.innerHTML = "(pelo menos 8 caracteres)"
+                campo_validar_senha.style.color = "Red"
+                ipt_senha.classList.add("error")
+
+                valida_senha = 0;
+            }
+
+            //cnpj
+
+            var cnpj = ipt_cnpj.value;
+
+            if (cnpj.length == 15) {
+                campo_cnpj.style.color = "green"
+                campo_cnpj.innerHTML = "CNPJ válido"
+                ipt_cnpj.classList.remove("error")
+                ipt_cnpj.classList.add("confirmar")
+
+                var valida_cnpj = 1;
+            } else {
+                ipt_cnpj.classList.add("error")
+                ipt_cnpj.classList.remove("confirmar")
+                campo_cnpj.style.color = "red"
+                campo_cnpj.innerHTML = "CNPJ precisa ter 15 digitos"
+
+                valida_cnpj = 0;
+            }
+
+            if (valida_vazio == 0 && valida_email == 0 && valida_senha == 0 && valida_usuario == 0 && valida_cnpj == 0 && valida_razao == 0 && valida_fantasia == 0) {
+                return false;
+                finalizarAguardar();
+            } else {
+                setInterval(sumirMensagem, 10000)
+            }
+
+        }
+        if (valida_email != 0 && valida_senha != 0 && valida_cnpj != 0 && valida_fantasia != 0 && valida_razao != 0) {
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrarempresa", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    razaoSocialServer: razaoVar,
+                    nomeFantasiaServer: nomeVar,
+                    cnpjServer: cnpjVar,
+                    telefone1Server: telefoneComercialVar,
+                    telefone2Server: telefoneCelVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    h2_aviso.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000")
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+            return false;
+        }
+
+        fetch("/usuarios/CadastrarEndereco", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                cepServer: cepVar,
+                ruaServer: ruaVar,
+                bairroServer: bairroVar,
+                cidadeServer: cidadeVar,
+                estadoServer: estadoVar,
+                numeroServer: numerovar
+            })
+        })
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+// function validar_telefone(){
+//     var cnpj = ipt_telefone_comercial
+
+//     if(cnpj.length == 15){
+//         campo_cnpj.style.color = "green"
+//         campo_cnpj.innerHTML = "CNPJ válido"
+//         ipt_cnpj.classList.remove("error")
+//         ipt_cnpj.classList.add("confirmar")
+//     }else{
+//         ipt_cnpj.classList.add("error")
+//         ipt_cnpj.classList.remove("confirmar")
+//         campo_cnpj.style.color = "red"
+//         campo_cnpj.innerHTML = "CNPJ inválido"
+//     }
+// }
+
+
+</script>

@@ -1,0 +1,113 @@
+.banner {
+    background-image: url("../assets/img/background_white.jpg");
+    padding: 100px 0;
+    background-size: cover;
+}
+
+.banner .container {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.caixa-formulario {
+    background-color: #FFF;
+    padding: 60px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 42px 12px rgba(0, 0, 0, 0.41);
+}
+
+.container .caixa-formulario h2 {
+    color: #36353F;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.campo label {
+    color: #32b9cd;
+    font-size: 15px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.campo input {
+    padding: 15px;
+    /* border: 3px solid #8f8f8f; */
+    width: 350px;
+    border-bottom: rgb(38, 80, 120) solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    
+    outline: none;
+}
+
+.caixa-formulario img {
+    height: 100px;
+}
+
+.btn_cadastrar {
+    margin-top: 20px;
+    width: 180px;
+    color: #FFF;
+    background-color: #32b9cd;
+    padding: 10px 20px;
+    font-size: 18px; 
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_cadastrar:hover {
+    opacity: 0.8;
+}
+
+.blocos {
+    display: flex;
+}
+
+.blocos li {
+    list-style-type: none;
+    margin: 0 10px;
+}
+
+footer {
+    padding: 45px 0;
+    background-color: #265078;
+}
+
+/* VALIDAÇÕES */
+
+.error {
+    border-bottom: red solid !important ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.confirmar {
+    border-bottom: green solid !important; 
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+@media screen and (max-width: 1366px) {
+    .navegacao {
+        width: 390px;
+        color: #FFF;
+        margin-left: 24%;
+      }
+}

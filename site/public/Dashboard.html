@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SmartIce</title>
+  <link rel="stylesheet" href="./css/estilos-gerais.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <link rel="stylesheet" href="cadastro.html">
+  <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <script src="../js/funcoes.js"></script>
+</head>
+
+<body onload="atualizacaoPeriodica()">
+  <main>
+    <!-- HEADER-->
+    <div class="aba">
+      <div class="header-left">
+        <div class="img_aba">
+          <a href="index.html"><img class="img_logo" src="./assets/img/logo2.png"></a>
+        </div>
+        <h1 class="titulo_aba"> Bem vindo, <h1 style="color: #ff6484;" id="b_usuario"></h1>
+        <div class="botoes">
+          <button class="b1" onclick="freezers()">Freezers</button>
+          <button class="b2" onclick="veiculos()">Veículos</button>
+          <a href="#cadastro_Funcionario">
+            <button class="b4" onclick="cadastro_funcionario()">
+              <p>Cadastrar Funcionario</p>
+            </button>
+          </a>
+          <a href="https://reparossmart.auvo.com.br/Login#signin">
+            <button class="b2">Suporte</button>
+          </a>
+          <button class="b2" onclick="limparSessao()">Sair</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA DASHBOARD - FREEZER -->
+    <div id="container_dashboard" class="container_dashboard">
+      <!-- BOTÕES FREEZERS -->
+      <div class="Charts-Botoes">
+        <button class="button_freezers" onclick="freezers()">Freezer 1</button>
+        <button class="button_freezers" onclick="freezers()">Freezer 2</button>
+        <button class="button_freezers" onclick="freezers()">Freezer 3</button>
+        <button class="button_freezers" onclick="freezers()">Freezer 4</button>
+        <button class="button_freezers" onclick="freezers()">Freezer 5</button>
+      </div>
+      <!-- CAIXA DE ALERTAS  FREEZERS -->
+      <div class="container-alerta">
+        <div id="alerta" class="caixa-alerta frio">
+          <span class="span_situacao">CRITICO FRIO</span>
+          <span  class="span_graus"> 6</span>
+        </div>
+        <div id="alerta_freezer1" class="caixa-alerta">
+          <span id="span_situacao_freezer1" class="span_situacao">SITUAÇÃO ATUAL</span>
+          <span id="span_graus_atual_freezer1" class="span_graus"></span>
+        </div>
+        <div id="alerta" class="caixa-alerta quente">
+          <span class="span_situacao">CRITICO QUENTE</span>
+          <span class="span_graus"> 1</span>
+        </div>
+      </div>
+
+      <!-- DASHBOARDS -->
+      <div class="Charts-Dashboards">
+        <div id="durante_dia" class="durante_dia">
+          <canvas id="horas_dias"></canvas>
+        </div>
+        <div class="durante_ano" class="durante_ano">
+          <canvas id="ano"></canvas>
+        </div>
+      </div>
+
+      <!-- CARDS INFORMATIVOS -->
+      <div class="informacoes">
+
+        <!-- HISTORICO MEDIDAS -->
+        <div class="hist_medidas">
+          <!-- <h3 class="titulo_historico">HISTORICO</h3> -->
+        </div>
+
+        <!-- LEGENDA CORES -->
+        <div class="legenda">
+          <h3 class="titulo_legenda">LEGENDA</h3>
+          <div class="legenda_degrade">
+            <div class="legenda_critico_frio">
+              <p> CRITICO FRIO </p>
+              <p> Menor que -18º </p>
+              <div class="cor_criticoFrio"></div>
+            </div>
+            <div class="legenda_alerta_frio">
+              <div class="cor_alertaFrio"></div>
+              <p> ALERTA FRIO </p>
+              <p> -16.5º </p>
+            </div>
+            <div class="legenda_ideal">
+              <div class="cor_ideal"></div>
+              <p> IDEAL </p>
+              <p> -14.5º </p>
+            </div>
+            <div class="legenda_alerta_quente">
+              <div class="cor_alertaQuente"></div>
+              <p> ALERTA QUENTE </p>
+              <p> -13.5º </p>
+            </div>
+            <div class="legenda_critico_quente">
+              <div class="cor_criticoQuente"></div>
+              <p> CRITICO QUENTE </p>
+              <p> Maior que -12º</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <!-- TELA DASHBOARD - VEICULOS -->
+    <div style="display: none;" id="container_dashboard_veiculo" class="container_dashboard">
+      <!-- BOTÕES VEICULOS -->
+      <div class="Charts-Botoes">
+        <button class="button_freezers" onclick="veiculo()">Veiculo 1</button>
+        <button class="button_freezers" onclick="veiculo()">Veiculo 2</button>
+        <button class="button_freezers" onclick="veiculo()">Veiculo 3</button>
+        <button class="button_freezers" onclick="veiculo()">Veiculo 4</button>
+        <button class="button_freezers" onclick="veiculo()">Veiculo 5</button>
+      </div>
+      <!-- CAIXA DE ALERTAS VEICULO-->
+      <div class="container-alerta">
+        <div id="alerta" class="caixa-alerta frio">
+          <span class="span_situacao">CRITICO FRIO</span>
+          <span class="span_graus"> 3</span>
+        </div>
+        <div id="alerta" class="caixa-alerta">
+          <span class="span_situacao">SITUAÇÃO ATUAL</span>
+          <span class="span_graus"> -33.5º</span>
+        </div>
+        <div id="alerta" class="caixa-alerta quente">
+          <span class="span_situacao">CRITICO QUENTE</span>
+          <span class="span_graus"> 2</span>
+        </div>
+      </div>
+      <!-- DASHBOARDS -->
+      <div class="Charts-Dashboards">
+        <div id="durante_dia_veiculo" class="durante_dia">
+          <canvas id="horas_dias_veiculo"></canvas>
+        </div>
+        <div id="durante_ano_veiculo" class="durante_ano">
+          <canvas id="ano_veiculo"></canvas>
+        </div>
+      </div>
+
+      <!-- CARDS INFORMATIVOS -->
+      <div class="informacoes">
+
+        <!-- HISTORICO MEDIDAS -->
+        <div class="hist_medidas">
+          <!-- <h3 class="titulo_historico">HISTORICO</h3> -->
+        </div>
+
+        <!-- LEGENDA CORES -->
+        <div class="legenda">
+          <h3 class="titulo_legenda">LEGENDA</h3>
+          <div class="legenda_degrade">
+            <div class="legenda_critico_frio">
+              <p> CRITICO FRIO </p>
+              <p> Menor que -36º </p>
+              <div class="cor_criticoFrio"></div>
+            </div>
+            <div class="legenda_alerta_frio">
+              <div class="cor_alertaFrio"></div>
+              <p> ALERTA FRIO </p>
+              <p> -34.5º</p>
+            </div>
+            <div class="legenda_ideal">
+              <div class="cor_ideal"></div>
+              <p> IDEAL </p>
+              <p> -33º</p>
+            </div>
+            <div class="legenda_alerta_quente">
+              <div class="cor_alertaQuente"></div>
+              <p> ALERTA QUENTE </p>
+              <p> -31.5º</p>
+            </div>
+            <div class="legenda_critico_quente">
+              <div class="cor_criticoQuente"></div>
+              <p> CRITICO QUENTE </p>
+              <p> Maior que -30º</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <!-- CADASTRO DE FUNCIONARIO -->
+    <div id="id_container_cadastro" class="container-cadastro">
+      <form novalidate="novalidate" id="form-cadastro" class="caixa-formulario">
+        <h2>Registre seu funcionário!</h2>
+
+        <ul class="blocos">
+          <li>
+            <div class="campo">
+              <label for="nome">Nome:</label>
+              <input onkeyup="validar_nome()" type="text" id="ipt_nome" name="nome" placeholder="20 caracteres">
+              <span id="campo_nome"></span>
+
+              <!-- <input onkeyup="validar_cargo()" type="text" id="cargo" name="cargo" placeholder="50 caracteres">
+              <span id="campo_cargo"></span> -->
+            </div><br>
+
+            <div class="campo">
+              <label for="email">E-mail:</label>
+              <input onkeyup="verificar_registro_email()" id="ipt_email" type="email" name="email"
+                placeholder="email@email.com">
+              <span id="campo_confirmar_email"></span>
+            </div><br>
+
+            <div class="campo">
+              <label for="senha">Senha:</label>
+              <input onkeyup="validar_registro_senha()" id="ipt_senha" type="password" name="senha"
+                placeholder="********">
+              <p id="campo_validar_senha">Pelo menos 8 caracteres</p>
+            </div>
+            <div id="cadastro_Funcionario"></div>
+            <div class="campo">
+              <label for="confirmsenha">Confirmação de Senha:</label>
+              <input onkeyup="validar_registro_senha()" id="ipt_confirmSenha" type="password" name="confirmSenha"
+                placeholder="********">
+              <span id="campo_confirmar_senha"></span>
+            </div>
+            
+            <div class="campo">
+              <label class="funcao">
+                Função:
+              </label>
+            </div>
+            
+            <select id="select_cargos">
+              <option value="analista junior">analista junior</option>
+              <option value="analista pleno">analista pleno</option>
+              <option value="analista senior">analista senior</option>
+            </select>
+          </li>
+
+          <div class="button_enviar">
+            <button onclick="cadastrar_funcionario()"><b>Enviar</b></button>
+          </div>
+
+        </ul>
+      </form>
+    </div>
+  </main>
+
+</body>
+
+</html>
+
+<script>
+
+  // COLOCAR NOME DA EMPRESA NO HTML
+  b_usuario.innerHTML = sessionStorage.NOME_EMPRESA;
+
+  // GRAFICOS DASHBOARD - FREEZER
+
+  const anual = [
+    'Nov/21',
+    'Dez/21',
+    'Jan/22',
+    'Fev/22',
+    'Mar/22',
+    'Abr/22',
+    'Mai/22',
+    'Jun/22',
+    'Jul/22',
+    'Ago/22',
+    'Set/22',
+    'Out/22',
+  ]
+  const horas = [
+    '13:40',
+    '13:45',
+    '13:50',
+    '13:55',
+    '14:00',
+    '14:05',
+    '14:10',
+    '14:15',
+    '14:20',
+    '14:25',
+    '14:30',
+    '14:35',
+    '14:40',
+    '14:45',
+    '14:50',
+    '14:55',
+    '15:00',
+    '15:05',
+    '15:10',
+    '15:15',
+    '15:20',
+    '15:25',
+    '15:30',
+  ]
+
+  const data = {
+    labels: anual,
+    datasets: [{
+      label: 'Mensal',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [13, 15, 11, 5, 3, 6, 2, 0.5, 4, 0.1, 2, 3],
+    }]
+  };
+
+
+  const horas_dia = {
+    labels: horas,
+    datasets: [{
+      label: 'Diario',
+      backgroundColor: 'rgb(100, 15, 230)',
+      borderColor: 'rgb(100, 15, 230)',
+      data: [15, 21, 38, 23, 15, 18, 13, 14.5, 14.2, 18, 13.8, 20, 15, 15.5, 13.2, 13, 9, 14.3],
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+
+  const ano = new Chart(
+    document.getElementById('ano'),
+    config
+  );
+
+
+
+  // GRAFICOS DASHBOARD - VEICULO
+
+  const anual_veiculo = [
+    'Nov/21',
+    'Dez/21',
+    'Jan/22',
+    'Fev/22',
+    'Mar/22',
+    'Abr/22',
+    'Mai/22',
+    'Jun/22',
+    'Jul/22',
+    'Ago/22',
+    'Set/22',
+    'Out/22',
+  ]
+
+  const data_veiculo = {
+    labels: anual_veiculo,
+    datasets: [{
+      label: 'Mensal',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [20, 16, 14, 3, 7, 2, 2, 1, 5, 2, 2, 0.5],
+    }]
+  };
+
+  const config_veiculo = {
+    type: 'bar',
+    data: data_veiculo,
+    options: {}
+  };
+
+  const ano_veiculo = new Chart(
+    document.getElementById('ano_veiculo'),
+    config_veiculo
+  );
+
+  // VALIDAÇÃO NOME 0
+  function validar_nome() {
+    var nome = ipt_nome.value;
+
+
+    if (nome.length < 10) {
+      ipt_nome.classList.add("error")
+      ipt_nome.classList.remove("confirmar")
+      campo_nome.style.color = "red"
+      campo_nome.innerHTML = "Nome com poucos caracteres!"
+    } else {
+      campo_nome.style.color = "green"
+      campo_nome.innerHTML = "Nome válido"
+      ipt_nome.classList.remove("error")
+      ipt_nome.classList.add("confirmar")
+    }
+  }
+
+  // VALIDANDO CARGO
+  function validar_cargo() {
+    var cargo_usuario = cargo.value;
+
+    if (cargo_usuario.length > 30) {
+      cargo.classList.add("error")
+      cargo.classList.remove("confirmar")
+      campo_cargo.style.color = "red"
+      campo_cargo.innerHTML = "Passou dos caracteres limites!"
+    } else {
+      campo_cargo.style.color = "green"
+      campo_cargo.innerHTML = "Cargo válido"
+      cargo.classList.remove("error")
+      cargo.classList.add("confirmar")
+    }
+  }
+
+  // VALIDAÇÃO E-MAIL
+  function verificar_registro_email() {
+    var email = ipt_email.value.trim()
+
+    /* Verificar se tem 6 caracteres ou mais no email antes do @*/
+    if (email.indexOf(" ") > 0) {
+      ipt_email.classList.add("error")
+      ipt_email.classList.remove("confirmar")
+      campo_confirmar_email.style.color = "red"
+      campo_confirmar_email.innerHTML = "Email inválido, retire os espaços!"
+    } else if ((email.indexOf("@sptech.school") > 6 || email.indexOf("@gmail.com") > 6) && email.indexOf("@") > 6) {
+      campo_confirmar_email.style.color = "green"
+      campo_confirmar_email.innerHTML = "Email válido"
+      ipt_email.classList.remove("error")
+      ipt_email.classList.add("confirmar")
+    } else {
+      ipt_email.classList.add("error")
+      ipt_email.classList.remove("confirmar")
+      campo_confirmar_email.style.color = "red"
+      campo_confirmar_email.innerHTML = "Email inválido"
+    }
+  }
+
+  // VALIDAÇÃO SENHA
+  function validar_registro_senha() {
+    var senha = ipt_senha.value
+    var confirmSenha = ipt_confirmSenha.value
+    /* validação da senha, se tem espaço no começo ou no fim */
+    if (senha.startsWith(" ") || senha.endsWith(" ")) {
+      campo_validar_senha.style.color = "Red"
+      campo_validar_senha.innerHTML = "A senha não pode começar nem terminar com um espaço"
+      ipt_senha.classList.add("error")
+    } else { /* validação da senha, se tem 8 letras ou mais */
+      if (senha.length >= 8) {
+        ipt_senha.classList.remove("error")
+        ipt_senha.classList.add("confirmar")
+        campo_validar_senha.style.color = "Green"
+        campo_validar_senha.innerHTML = "(pelo menos 8 caracteres)"
+        /* Confirmar se a senha é igual nos dois campos*/
+        /*Veririfar se senha é igual com campo CONFIRMSENHA*/
+        if ((senha == confirmSenha) && confirmSenha.length >= 8) {
+          ipt_confirmSenha.classList.remove("error")
+          ipt_confirmSenha.classList.add("confirmar")
+          campo_confirmar_senha.style.color = "green"
+          campo_confirmar_senha.innerHTML = "senha correta"
+        } else {
+          ipt_confirmSenha.classList.add("error")
+          ipt_confirmSenha.classList.remove("confirmar")
+          campo_confirmar_senha.style.color = "red"
+          campo_confirmar_senha.innerHTML = "senha incorreta"
+        }
+      } else {
+        ipt_senha.classList.remove("confirmar")
+        campo_validar_senha.innerHTML = "(pelo menos 8 caracteres)"
+        campo_validar_senha.style.color = "Red"
+        ipt_senha.classList.add("error")
+      }
+    }
+  }
+
+  // TELA DE CADASTRO DO FUNCIONARIO
+  function cadastro_funcionario() {
+    id_container_cadastro.style.display = "block";
+    container_dashboard.style.display = "none";
+    container_dashboard_veiculo.style.display = "none";
+
+  }
+
+  // VOLTAR PARA TELA DA DASH
+  function enviar() {
+    id_container_cadastro.style.display = "none";
+    container_dashboard.style.display = "block";
+  }
+
+  //VEICULOS
+  function veiculos() {
+    container_dashboard.style.display = "none";
+    id_container_cadastro.style.display = "none";
+    container_dashboard_veiculo.style.display = "block";
+  }
+
+  //FREEZER
+  function freezers() {
+    container_dashboard.style.display = "block";
+    container_dashboard_veiculo.style.display = "none";
+    id_container_cadastro.style.display = "none";
+  }
+
+  var email = ipt_email
+  var cargo_usuario = cargo.value
+  var nome = ipt_nome
+  var senha = ipt_senha
+
+  function cadastrar_funcionario() {
+    var nomeVar = ipt_nome.value;
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    var cargoVar = select_cargos.value;
+    var idEmpresaVar = sessionStorage.ID_EMPRESA;
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/CadastrarUsuario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        funcaoServer: cargoVar,
+        idEmpresaServer: idEmpresaVar
+      })
+    })
+  }
+
+</script>
+
+<script>
+
+  //                               PARTE GRAFICA DO FREEZER
+
+  let proximaAtualizacao;
+
+  window.onload = validarSessao()
+  window.onload = obterDadosGrafico(1000);
+
+  // O gráfico é construído com três funções:
+  // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+  // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+  // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+  // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+  // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+  // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+  //     Para ajustar o "select", ajuste o comando sql em src/models
+  function obterDadosGrafico(idSensor) {
+
+      if (proximaAtualizacao != undefined) {
+          clearTimeout(proximaAtualizacao);
+      }
+
+      fetch(`/medidas/ultimas/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+          if (response.ok) {
+              response.json().then(function (resposta) {
+                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                  resposta.reverse();
+
+                  plotarGrafico(resposta, idSensor);
+              });
+          } else {
+              console.error('Nenhum dado encontrado ou erro na API');
+          }
+      })
+          .catch(function (error) {
+              console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+          });
+  }
+
+  // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+  // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+  // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+  function plotarGrafico(resposta, idSensor) {
+      console.log('iniciando plotagem do gráfico...');
+
+      // Criando estrutura para plotar gráfico - labels
+      let labels = [];
+      
+      // Criando estrutura para plotar gráfico - dados
+      let dados = {
+        labels: labels,
+        datasets: [{
+            label: 'Temperatura',
+            backgroundColor: 'rgb(100, 15, 230)',
+            borderColor: 'rgb(100, 15, 230)',
+            data: [],
+    }]
+  };
+      
+      console.log('----------------------------------------------')
+      console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+      console.log(resposta)
+      
+      // Inserindo valores recebidos em estrutura para plotar o gráfico
+      for (i = 0; i < resposta.length; i++) {
+          var registro = resposta[i];
+          labels.push(registro.momento_grafico);
+          dados.datasets[0].data.push(registro.temperatura);
+      }
+
+
+
+      var temperatura_atual_freezer = registro.temperatura
+      span_graus_atual_freezer1.innerHTML = `${temperatura_atual_freezer}°`
+      if(temperatura_atual_freezer < -13.5 && temperatura_atual_freezer > -16.5) {
+                  alerta_freezer1.style.backgroundColor = `#85c5ff`
+                } else if (temperatura_atual_freezer <= -16.5 && temperatura_atual_freezer >= -18 ) {
+                  alerta_freezer1.style.backgroundColor = `blue`
+                } else if (temperatura_atual_freezer < -18) {
+                  alerta_freezer1.style.backgroundColor = `purple`
+                } else if (temperatura_atual_freezer >= -13.5 && temperatura_atual_freezer <= -12) {
+                  alerta_freezer1.style.backgroundColor = `orange`
+                } else if (temperatura_atual_freezer > -12) {
+                  alerta_freezer1.style.backgroundColor = `red`
+                }
+
+
+      
+      console.log('----------------------------------------------')
+      console.log('O gráfico será plotado com os respectivos valores:')
+      console.log('Labels:')
+      console.log(labels)
+      console.log('Dados:')
+      console.log(dados.datasets)
+      console.log('----------------------------------------------')
+      
+      // Criando estrutura para plotar gráfico - config
+      const config = {
+          type: 'line',
+          data: dados,
+      };
+
+      // Adicionando gráfico criado em div na tela
+      let myChart = new Chart(
+          document.getElementById('horas_dias'),
+          config
+      );
+
+      setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 2000);
+  }
+
+  // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+  // buscando a última medida inserida em tabela contendo as capturas, 
+
+  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+  //     Para ajustar o "select", ajuste o comando sql em src/models
+  function atualizarGrafico(idSensor, dados, myChart) {
+
+fetch(`/medidas/tempo-real/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].momento_grafico)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                
+                // registro da nova temperatura no SITUACAO ATUAL
+                var temp = novoRegistro[0].temperatura
+                console.log(temp)
+                span_graus_atual_freezer1.innerHTML = `${temp}°`
+
+                if(temp < -13.5 && temp > -16.5) {
+                  alerta_freezer1.style.backgroundColor = `#85c5ff`
+                } else if (temp <= -16.5 && temp >= -18 ) {
+                  alerta_freezer1.style.backgroundColor = `blue`
+                } else if (temp < -18) {
+                  alerta_freezer1.style.backgroundColor = `purple`
+                } else if (temp >= -13.5 && temp <= -12) {
+                  alerta_freezer1.style.backgroundColor = `orange`
+                } else if (temp > -12) {
+                  alerta_freezer1.style.backgroundColor = `red`
+                }
+
+                myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 2000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+
+</script>
